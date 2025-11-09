@@ -1,33 +1,42 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+
 const TextChange = () => {
-  const texts = ["Hi, I'm Aditi", "Hi, I'm Aditi", "Hi, I'm Aditi"];
-  const [currenText, setCurrentText] = useState("");
-  const [endValue, setendValue] = useState(true);
-  const [isForward, setIsForward] = useState(true);
+  const texts = useMemo(
+    () => ["Full Stack Developer", "Frontend Developer", "Backend Developer"],
+    []
+  );
+
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
   const [index, setIndex] = useState(0);
+  const [speed, setSpeed] = useState(120);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentText(texts[index].substring(0, endValue));
-      if (isForward) {
-        setendValue((prev) => prev + 1);
-      } else {
-        setendValue((prev) => prev - 1);
-      }
-      if (endValue > texts[index].length + 10) {
-        setIsForward(false);
-      }
-      if (endValue < 2.1) {
-        setIsForward(true);
-        setIndex((prev) => prev & texts.length);
-      }
-    }, 50);
+    const current = texts[index];
+    const typing = () => {
+      setCurrentText((prev) =>
+        isDeleting ? current.substring(0, prev.length - 1) : current.substring(0, prev.length + 1)
+      );
 
-    return () => clearInterval(intervalId);
-  }, [endValue, isForward, index, texts]);
+      setSpeed(isDeleting ? 60 : 120);
 
-  return <div className="transition ease duration-300">{currenText}</div>;
+      if (!isDeleting && currentText === current) {
+        setTimeout(() => setIsDeleting(true), 1000);
+      } else if (isDeleting && currentText === "") {
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % texts.length);
+      }
+    };
+
+    const timer = setTimeout(typing, speed);
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, texts, index, speed]);
+
+  return (
+    <span className="text-[#ffb347] font-semibold border-r-2 border-[#ffb347] pr-1 animate-pulse">
+      {currentText}
+    </span>
+  );
 };
 
 export default TextChange;

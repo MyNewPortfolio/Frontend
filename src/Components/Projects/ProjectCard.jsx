@@ -1,23 +1,116 @@
-import React from "react";
+import PropTypes from "prop-types";
 import bannerImg from "../../assets/photo-C8q0KQHG.webp";
-const ProjectCard = ({ title, main }) => {
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+
+const ProjectCard = ({ title, main, tech, github, live, image }) => {
   return (
-    <div className="p-3 md:p-6 flex flex-col w-80 bg-[#0c0e19] shadow-xl shadow-slate-900 rounded-2xl">
-      <img className="p-4" src={bannerImg} alt="" />
-      <h3 className="px-4 text-xl md:text-2xl font-bold leading-normal">
+    <div className="p-4 md:p-6 flex flex-col bg-[#0c0e19] bg-opacity-80 shadow-xl shadow-slate-900 rounded-2xl hover:shadow-[#ffb347]/20 transition-all duration-300 max-w-sm md:max-w-md w-full">
+      {/* Image */}
+      <img
+        src={image || bannerImg}
+        alt={title}
+        className="rounded-xl mb-4 object-cover w-full h-40 md:h-48"
+      />
+
+      {/* Title */}
+      <h3 className="px-2 text-xl md:text-2xl font-bold leading-normal text-[#ffb347]">
         {title}
       </h3>
-      <p className="px-4 text-sm md:text-md leading-tight py-2">{main}</p>
-      <div className="mt-2 p-2 md:p-4 flex gap-2 md:gap-4">
-        <button className="md:mt-10 text-white py-2 px-3 text-sm md:text-lg md:py-2 md:px-4 hover:opacity-85 duration-300 hover:scale-105 font-semibold rounded-3xl bg-[#465697]">
-          Demo
-        </button>
-        <button className="md:mt-10 text-white py-2 px-3 text-sm md:text-lg md:py-2 md:px-4 hover:opacity-85 duration-300 hover:scale-105 font-semibold rounded-3xl bg-[#465697]">
-          Source Code
-        </button>
+
+      {/* Description */}
+      <p className="px-2 text-sm md:text-md leading-tight py-2 text-gray-300">
+        {main}
+      </p>
+
+      {/* Technologies */}
+      {tech && (
+        <div className="flex flex-wrap gap-2 px-2 mt-2">
+          {tech.map((t, i) => (
+            <span
+              key={i}
+              className="text-xs bg-[#ffb347] bg-opacity-20 text-[#ffb347] font-medium px-2 py-1 rounded-full"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* Buttons */}
+      {/* <div className="mt-4 flex flex-col sm:flex-row gap-3 px-2 w-full">
+        {live && (
+          <a
+            href={live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 flex-1 py-2 rounded-3xl bg-[#465697] text-white font-semibold text-sm md:text-base hover:opacity-85 hover:scale-105 transition-all duration-300"
+          >
+            <FaExternalLinkAlt /> Demo
+          </a>
+        )}
+        {github && (
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 flex-1 py-2 rounded-3xl bg-[#465697] text-white font-semibold text-sm md:text-base hover:opacity-85 hover:scale-105 transition-all duration-300"
+          >
+            <FaGithub /> Source Code
+          </a>
+        )}
+      </div> */}
+
+      <div className="mt-4 flex flex-col sm:flex-row gap-3 px-2 w-full">
+        {live && (
+          <a
+            href={live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+        flex items-center justify-center gap-2
+        flex-1 sm:basis-[40%] md:basis-[39%] 
+        py-2 rounded-3xl 
+        bg-[#465697] text-white font-semibold 
+        text-sm md:text-base 
+        hover:opacity-85 hover:scale-105 
+        transition-all duration-300
+      "
+          >
+            <FaExternalLinkAlt /> Demo
+          </a>
+        )}
+
+        {github && (
+          <a
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+        flex items-center justify-center gap-2
+        flex-1 sm:basis-[60%] md:basis-[61%]
+        py-2 rounded-3xl 
+        bg-[#465697] text-white font-semibold 
+        text-sm md:text-base 
+        hover:opacity-85 hover:scale-105 
+        transition-all duration-300
+      "
+          >
+            <FaGithub /> Source Code
+          </a>
+        )}
       </div>
+
     </div>
   );
 };
 
 export default ProjectCard;
+
+ProjectCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  main: PropTypes.string.isRequired,
+  tech: PropTypes.arrayOf(PropTypes.string),
+  github: PropTypes.string,
+  live: PropTypes.string,
+  image: PropTypes.string,
+};
