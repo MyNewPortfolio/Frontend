@@ -117,7 +117,7 @@ const Projects = () => {
       main: "A real-time email management app for composing, sending, and receiving mails. Built with React, Node.js, MongoDB, and Socket.io for instant updates and modern UI.",
       tech: ["React.js", "Node.js", "MongoDB", "Express.js", "Socket.io"],
       github: "https://github.com/Email-Service2",
-      live: "emailservice2.netlify.app",
+      live: "https://emailservice2.netlify.app/",
     }
   ];
 
