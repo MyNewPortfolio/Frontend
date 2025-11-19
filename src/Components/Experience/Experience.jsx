@@ -20,7 +20,7 @@ const Experience = () => {
   return (
     <motion.section
       id="Experience"
-      className="px-8 md:px-20 py-12 text-white bg-black bg-opacity-30 rounded-2xl shadow-xl mx-4 md:mx-20 my-10 overflow-hidden"
+      className="scroll-mt-16 px-8 md:px-20 py-12 text-white bg-black bg-opacity-30 rounded-2xl shadow-xl mx-4 md:mx-20 my-10 overflow-hidden"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}

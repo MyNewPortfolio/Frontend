@@ -23,7 +23,7 @@ const About = () => {
   return (
     <motion.section
       id="About"
-      className="text-white flex flex-col md:flex-row items-center justify-center bg-black bg-opacity-30 shadow-xl mx-4 md:mx-20 rounded-2xl p-8 md:p-12 overflow-hidden"
+      className="scroll-mt-16 text-white flex flex-col md:flex-row items-center justify-center bg-black bg-opacity-30 shadow-xl mx-4 md:mx-20 rounded-2xl p-8 md:p-12 overflow-hidden"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}

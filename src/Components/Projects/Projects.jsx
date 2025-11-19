@@ -130,7 +130,7 @@ const Projects = () => {
   return (
     <section
       id="Projects"
-      className="relative flex flex-col items-center justify-center py-16 px-4 md:px-12 text-white bg-black bg-opacity-30 rounded-2xl shadow-xl mx-4 md:mx-20 my-10 overflow-hidden"
+      className="scroll-mt-16 relative flex flex-col items-center justify-center py-16 px-4 md:px-12 text-white bg-black bg-opacity-30 rounded-2xl shadow-xl mx-4 md:mx-20 my-10 overflow-hidden"
     >
       {/* Header */}
       <h2 className="text-3xl md:text-4xl font-extrabold text-[#ffb347] text-center ">

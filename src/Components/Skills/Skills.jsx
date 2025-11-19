@@ -53,7 +53,7 @@ const Skills = () => {
   return (
     <motion.section
       id="skills"
-      className="bg-black bg-opacity-30 text-white shadow-xl rounded-2xl mx-4 md:mx-20 my-12 p-10 md:p-16 overflow-hidden"
+      className="scroll-mt-16 bg-black bg-opacity-30 text-white shadow-xl rounded-2xl mx-4 md:mx-20 my-12 p-10 md:p-16 overflow-hidden"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}

@@ -19,7 +19,7 @@ const Education = () => {
   return (
     <motion.section
       id="Education"
-      className="text-white bg-black bg-opacity-30 mx-4 md:mx-20 rounded-2xl shadow-xl p-8 md:p-12 my-10"
+      className="scroll-mt-16 text-white bg-black bg-opacity-30 mx-4 md:mx-20 rounded-2xl shadow-xl p-8 md:p-12 my-10"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
